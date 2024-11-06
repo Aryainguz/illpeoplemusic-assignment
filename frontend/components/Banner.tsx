@@ -6,7 +6,7 @@ const Banner = () => {
   const [isOpen, setIsOpen] = useState(true);
 
   return (
-    <div className="mt-4 text-sm">
+    <div className="mt-4 text-sm hidden sm:block">
     <div className="w-full h-[0.4px] bg-gradient-to-r from-transparent via-white to-transparent"></div>
       <div className="flex items-center py-4 mx-auto max-w-7xl">
         <div className="flex gap-4">

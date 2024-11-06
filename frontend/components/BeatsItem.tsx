@@ -1,4 +1,3 @@
-// components/BeatItem.js
 export default function BeatItem({ beat }:{beat: any}) {
     return (
       <div className="flex items-center justify-between p-4 bg-gray-800 rounded-md my-2">
