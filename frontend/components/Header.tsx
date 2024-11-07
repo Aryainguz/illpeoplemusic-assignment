@@ -19,7 +19,6 @@ export default function Component() {
   const [open, setOpen] = useState(false)
   const isMobile = useMediaQuery({ maxWidth: 768 })
 
-  const {data} = useContext(dataContext);
   const {search,setSearch} = useContext(dataContext);
 
   

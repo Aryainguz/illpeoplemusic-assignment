@@ -1,14 +1,13 @@
 "use client"
 import Banner from "@/components/Banner";
 import ExploreBeats from "@/components/Main";
-import Header from "../components/Header";
-import { useContext, useEffect, useState } from "react";
 import { dataContext } from "@/context/dataContext";
+import { useContext, useEffect } from "react";
+import Header from "../components/Header";
 
 
 export default function Home() {
 
-  console.log("first")
   const {setData} = useContext(dataContext);
 
 

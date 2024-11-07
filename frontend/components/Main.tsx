@@ -1,8 +1,8 @@
 "use client";
-import { useContext, useEffect, useState } from "react";
+import { dataContext } from "@/context/dataContext";
+import { useContext } from "react";
 import BeatsList from "./BeatsList";
 import MusicPlayer from "./MusicPlayer";
-import { dataContext } from "@/context/dataContext";
 
 const ExploreBeats = () => {
   
@@ -43,17 +43,17 @@ const ExploreBeats = () => {
           <button
             className="bg-[#262626] px-4 py-2 rounded-3xl shadow-lg text-xs text-white hover:bg-gradient-to-r hover:from-violet-600 hover:to-indigo-600 whitespace-nowrap"
           >
-            Trending Beats
+            WAV Under 1K
           </button>
           <button
             className="bg-[#262626] px-4 py-2 rounded-3xl shadow-lg text-xs text-white hover:bg-gradient-to-r hover:from-emerald-400 hover:to-cyan-400 whitespace-nowrap"
           >
-            Trending Beats
+            WAV + Stems Under 2K
           </button>
           <button
             className="bg-[#262626] px-4 py-2 rounded-3xl shadow-lg text-xs text-white hover:bg-gradient-to-r hover:from-cyan-500 hover:to-blue-500 whitespace-nowrap"
           >
-            Trending Beats
+            Beats with Exclusive
           </button>
         </div>
       </div>

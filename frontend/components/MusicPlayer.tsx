@@ -50,8 +50,8 @@ export default function MusicPlayer() {
         height={48}
       />
       <div className="flex flex-col">
-        <span className="font-semibold text-lg">ALIEN OG</span>
-        <span className="text-sm text-gray-400">BEATOONS | 160 BPM</span>
+        <span className="font-semibold text-lg">{playingSong.artist}</span>
+        <span className="text-sm text-gray-400">{playingSong.title} | {playingSong.bpm} BPM</span>
       </div>
       </div>
 
@@ -96,7 +96,7 @@ export default function MusicPlayer() {
       <div className="hidden sm:flex gap-2">
       <button className="bg-gradient-to-r from-violet-600 to-indigo-600 flex text-white px-4 py-2 rounded-md text-sm font-semibold shadow-lg">
       <ShoppingCart size={16} className="mr-2" />
-      ₹2,000
+     {playingSong.price}
     </button>
       </div>
     </div>

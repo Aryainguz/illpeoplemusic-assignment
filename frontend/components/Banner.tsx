@@ -1,9 +1,7 @@
 "use client"
-import { useState } from "react";
 
 
 const Banner = () => {
-  const [isOpen, setIsOpen] = useState(true);
 
   return (
     <div className="mt-4 text-sm hidden sm:block">
