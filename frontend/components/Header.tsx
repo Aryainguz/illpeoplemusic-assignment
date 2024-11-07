@@ -7,16 +7,22 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import { Input } from "@/components/ui/input"
-import { ArrowDown, Menu, Search } from "lucide-react"
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
+import { dataContext } from "@/context/dataContext"
+import { ArrowDown, Menu } from "lucide-react"
 import Image from "next/image"
-import { useState } from "react"
+import { useContext, useState } from "react"
 import { useMediaQuery } from "react-responsive"
 
 export default function Component() {
   const [open, setOpen] = useState(false)
   const isMobile = useMediaQuery({ maxWidth: 768 })
+
+  const {data} = useContext(dataContext);
+  const {search,setSearch} = useContext(dataContext);
+
+  
 
   const menuItems = [
     { label: "General", value: "general" },
@@ -31,7 +37,10 @@ export default function Component() {
       <div className="flex items-center gap-4">
         <Image src="/main-logo-white.png" alt="logo" width={125} height={125} />
         <div className="relative">
-          <Input placeholder="Search top beats" className="w-80 bg-[#303030]" />
+          <Input placeholder="Search top beats" className="w-80 bg-[#303030]"
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+          />
           <DropdownMenu open={open} onOpenChange={setOpen}>
             <DropdownMenuTrigger asChild>
               <Button

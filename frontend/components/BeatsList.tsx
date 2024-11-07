@@ -74,7 +74,7 @@ const SortDropdown = () => (
   </div>
 );
 
-const BeatCard = ({ title, artist, bpm, genere, price, tags }: any) => (
+const BeatCard = ({ title, artist, bpm, genere, price, tags,img }: any) => (
 
 
 
@@ -90,7 +90,7 @@ const BeatCard = ({ title, artist, bpm, genere, price, tags }: any) => (
           >
             <div className="flex items-center gap-3 flex-1 min-w-0">
                 <Image
-                  src="https://img.freepik.com/free-psd/saturday-party-social-media-template_505751-2936.jpg?t=st=1730869604~exp=1730873204~hmac=4860b332d3e72d2402d2460228cc511256340ff38adba3b6870d06f59f4d5727&w=740"
+                  src={img}
                   alt="cover"
                   className="w-14 h-14 rounded-md"
                   width={48}
@@ -155,7 +155,7 @@ const BeatCard = ({ title, artist, bpm, genere, price, tags }: any) => (
         <PlayCircle className="text-white" size={24} />
 
         <Image
-          src="https://img.freepik.com/free-psd/saturday-party-social-media-template_505751-2936.jpg?t=st=1730869604~exp=1730873204~hmac=4860b332d3e72d2402d2460228cc511256340ff38adba3b6870d06f59f4d5727&w=740"
+          src={img}
           alt="cover"
           className="w-12 h-12 rounded-md"
           width={48}
@@ -205,7 +205,8 @@ const BeatsList = () => {
 
 
   const {data} = useContext(dataContext);
-  console.log("yo",data)
+  const {search,setSearch} = useContext(dataContext);
+
 
 return (
   <div className="min-h-screen p-6 text-white">
@@ -219,6 +220,8 @@ return (
         className="w-80 bg-[#303030] 
   h-11 px-4 py-2 rounded-lg text-center
   "
+  value={search}
+  onChange={(e) => setSearch(e.target.value)}
       />
     </div>
 

@@ -35,7 +35,7 @@ export default function MusicPlayer() {
           onClick={togglePlayPause}
           variant="link"
           className="
-          absolute bottom-20 right-28 text-white
+          absolute bottom-20 right-28 text-white flex sm:hidden 
           "
           size="icon"
         >
