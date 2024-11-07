@@ -9,7 +9,6 @@ import {
 import { Input } from "@/components/ui/input";
 import {
   ArrowDown,
-  ArrowDown01Icon,
   DropletsIcon,
   EllipsisVertical,
   MoreVertical,
@@ -27,21 +26,13 @@ import { dataContext } from "@/context/dataContext";
 import { useContext } from "react";
 
 const FilterDropdown = ({ title }: { title: string }) => (
-
-
-
-
   <DropdownMenu>
     <DropdownMenuTrigger className="text-[#787878] text-xs font-semibold flex">
       {title}
       <ArrowDown size={16} className="text-[#787878] relative ml-1" />
     </DropdownMenuTrigger>
 
-    <DropdownMenuContent
-      className="bg-[#303030]
-          text-white
-          "
-    >
+    <DropdownMenuContent className="bg-[#303030] text-white">
       <DropdownMenuItem className="cursor-pointer">Beats</DropdownMenuItem>
       <DropdownMenuItem className="cursor-pointer">
         Beats With Hook
@@ -74,28 +65,29 @@ const SortDropdown = () => (
   </div>
 );
 
-const BeatCard = ({ title, artist, bpm, genere, price, tags,img }: any) => (
+const BeatCard = ({ title, artist, bpm, genere, price, tags, img,src }: any) => {
+  const { setPlayingSong,setSongOn } = useContext(dataContext);
 
-
-
-
-  <div className="beat-card">
-    {/* <div className="min-h-screen "> */}
+  return (
+    <div
+      className="beat-card"
+      onClick={() =>{
+        setPlayingSong({ title, artist, bpm, genere, price, tags, img,src })
+        setSongOn(true)
+      }
+      }
+    >
       <Card className="bg-zinc-900 border-[#1e1e1e] block sm:hidden">
         <div className="divide-y divide-zinc-800">
-          <div
-            // key={index}
-            className="flex items-center justify-between gap-4
-              bg-[#1e1e1e] p-4"
-          >
+          <div className="flex items-center justify-between gap-4 bg-[#1e1e1e] p-4">
             <div className="flex items-center gap-3 flex-1 min-w-0">
-                <Image
-                  src={img}
-                  alt="cover"
-                  className="w-14 h-14 rounded-md"
-                  width={48}
-                  height={48}
-                />
+              <Image
+                src={img}
+                alt="cover"
+                className="w-14 h-14 rounded-md"
+                width={48}
+                height={48}
+              />
               <div className="flex-1 min-w-0">
                 <h3 className="text-sm font-medium text-white truncate">
                   {title}
@@ -104,11 +96,9 @@ const BeatCard = ({ title, artist, bpm, genere, price, tags,img }: any) => (
               </div>
             </div>
             <div className="flex items-center gap-2">
-            <div className="flex">
-        <button className="bg-gradient-to-r from-violet-600 to-indigo-600 flex text-white px-4 py-2 rounded-md text-sm font-semibold shadow-lg">
-          <ShoppingCart size={16} className="mr-2" />₹{price}
-        </button>
-      </div>
+              <button className="bg-gradient-to-r from-violet-600 to-indigo-600 flex text-white px-4 py-2 rounded-md text-sm font-semibold shadow-lg">
+                <ShoppingCart size={16} className="mr-2" />₹{price}
+              </button>
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
                   <Button
@@ -138,118 +128,91 @@ const BeatCard = ({ title, artist, bpm, genere, price, tags,img }: any) => (
           </div>
         </div>
       </Card>
-    
-     
-    {/* </div> */}
 
-
-
-    
-    <div
-      className="items-center justify-between py-4 border-b border-gray-700
-  cursor-pointer hover:bg-[#3f3f3f] hidden sm:flex
-  "
-    >
-      <div className="flex items-center gap-4">
-
-        <PlayCircle className="text-white" size={24} />
-
-        <Image
-          src={img}
-          alt="cover"
-          className="w-12 h-12 rounded-md"
-          width={48}
-          height={48}
-        />
-
-        <div>
-          <h3 className="text-white font-semibold text-sm">{title}</h3>
-          <div className="text-gray-500 text-xs flex items-center gap-2">
-            <p className="text-gray-400 text-xs">{artist}</p>
-            <span className="flex mr-2 ml-2">
-              <Waves size={16} className="mr-2" />
-              {bpm} BPM
-            </span>
-            <span className="flex">
-              <Music size={16} className="mr-2" />
-              {genere}
-            </span>
+      <div className="items-center justify-between py-4 border-b border-gray-700 cursor-pointer hover:bg-[#3f3f3f] hidden sm:flex">
+        <div className="flex items-center gap-4">
+          <PlayCircle className="text-white" size={24} />
+          <Image
+            src={img}
+            alt="cover"
+            className="w-12 h-12 rounded-md"
+            width={48}
+            height={48}
+          />
+          <div>
+            <h3 className="text-white font-semibold text-sm">{title}</h3>
+            <div className="text-gray-500 text-xs flex items-center gap-2">
+              <p className="text-gray-400 text-xs">{artist}</p>
+              <span className="flex mr-2 ml-2">
+                <Waves size={16} className="mr-2" />
+                {bpm} BPM
+              </span>
+              <span className="flex">
+                <Music size={16} className="mr-2" />
+                {genere}
+              </span>
+            </div>
           </div>
         </div>
-      </div>
-      <div className="flex gap-2">
-        {tags.map((tag: any) => (
-          <span
-            key={tag}
-            className="bg-[#3f3f3f] text-white text-xs px-2 py-1 rounded-full"
-          >
-            {tag}
-          </span>
-        ))}
-      </div>
-      <div className="flex">
+        <div className="flex gap-2">
+          {tags.map((tag: any) => (
+            <span
+              key={tag}
+              className="bg-[#3f3f3f] text-white text-xs px-2 py-1 rounded-full"
+            >
+              {tag}
+            </span>
+          ))}
+        </div>
         <button className="bg-gradient-to-r from-violet-600 to-indigo-600 flex text-white px-4 py-2 rounded-md text-sm font-semibold shadow-lg">
           <ShoppingCart size={16} className="mr-2" />₹{price}
         </button>
-        <EllipsisVertical
-          size={20}
-          className="text-white relative top-2"
-          color="#787878"
-        />
+        <EllipsisVertical size={20} className="text-white relative top-2" />
       </div>
     </div>
-  </div>
-);
+  );
+};
 
 const BeatsList = () => {
+  const { data, search, setSearch } = useContext(dataContext);
 
+  return (
+    <div className="min-h-screen p-6 text-white">
+      <div className="flex">
+        <Search className="text-white relative z-10 left-[32px] top-3" size={20} />
+        <Input
+          placeholder="Search top beats"
+          className="w-80 bg-[#303030] h-11 px-4 py-2 rounded-lg text-center"
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+        />
+      </div>
 
-  const {data} = useContext(dataContext);
-  const {search,setSearch} = useContext(dataContext);
-
-
-return (
-  <div className="min-h-screen p-6 text-white">
-    <div className="flex">
-      <Search
-        className="text-white relative z-10 left-[32px] top-3"
-        size={20}
-      />
-      <Input
-        placeholder="Search top beats"
-        className="w-80 bg-[#303030] 
-  h-11 px-4 py-2 rounded-lg text-center
-  "
-  value={search}
-  onChange={(e) => setSearch(e.target.value)}
-      />
-    </div>
-
-    <div className="flex items-center justify-between mt-6">
-      <Filters />
-      <SortDropdown />
-    </div>
-    <div className="mt-6">
-         {data ? (
+      <div className="flex items-center justify-between mt-6">
+        <Filters />
+        <SortDropdown />
+      </div>
+      <div className="mt-6">
+        {data ? (
           data.map((beat: any) => (
             <BeatCard
               key={beat.id}
               title={beat.title}
               artist={beat.producer.store.general.name}
-              // artist={"Producer"}
               bpm={beat.tempo}
               genere={beat.key}
               img={beat.cover_picture}
               price={beat.prices[0].final_price}
               tags={beat.tag}
+            src={beat.preview}
             />
           ))
         ) : (
-          <p>Loading beats...</p> 
+          <p>Loading beats...</p>
         )}
-      
+      </div>
     </div>
-  </div>
-);
-}
+  );
+};
+
 export default BeatsList;

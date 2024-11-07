@@ -1,17 +1,18 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import BeatsList from "./BeatsList";
 import MusicPlayer from "./MusicPlayer";
+import { dataContext } from "@/context/dataContext";
 
 const ExploreBeats = () => {
-  const [isRefresh, setIsRefresh] = useState(false);
+  
 
   const handleRefresh = () => {
-    setIsRefresh(true);
-    setTimeout(() => {
-      setIsRefresh(false);
-    }, 1000);
+    
+    window.location.reload();
   };
+
+  const {songOn} = useContext(dataContext)
 
 
 
@@ -28,7 +29,7 @@ const ExploreBeats = () => {
             "
             onClick={handleRefresh}
           >
-            {isRefresh ? "Refreshing..." : "Refresh"}
+            Refresh
           </button>
         </div>
 
@@ -57,7 +58,7 @@ const ExploreBeats = () => {
         </div>
       </div>
       <BeatsList />
-      <MusicPlayer />
+     { songOn && <MusicPlayer />}
     </>
   );
 };

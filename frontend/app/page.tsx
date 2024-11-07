@@ -16,7 +16,7 @@ export default function Home() {
     const getData = async () => {
         const res = await fetch("https://api-server.illpeoplemusic.com/api/v2/playlist/trending");
         const data = await res.json();
-        // console.log("data", data.playlists[0].beats);
+        console.log("data", data.playlists[0].beats);
         setData(data.playlists[0].beats);
   }
     getData();

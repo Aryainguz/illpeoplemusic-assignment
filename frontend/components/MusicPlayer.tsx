@@ -1,23 +1,49 @@
 "use client";
 import { Button } from "@/components/ui/button"; 
 import { Slider } from "@/components/ui/slider";
+import { dataContext } from "@/context/dataContext";
 import { Pause, Play, ShoppingCart, Volume2 } from "lucide-react"; 
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
+
+
+
+
 
 export default function MusicPlayer() {
-  const [isPlaying, setIsPlaying] = useState(false);
   const [progress, setProgress] = useState(30);
   const [volume, setVolume] = useState(100);
 
-  const togglePlayPause = () => setIsPlaying(!isPlaying);
+
+  const { playingSong } = useContext(dataContext);
+
+  const audioRef = useRef<HTMLAudioElement>(new Audio(playingSong?.src));
+
+  const [isPlaying, setIsPlaying] = useState<boolean>(false);
+
+  const togglePlayPause = (): void => {
+    if (isPlaying) {
+      audioRef.current.pause();
+    } else {
+      audioRef.current.play();
+    }
+    setIsPlaying(!isPlaying);
+  };
+
+  useEffect(() => {
+    return () => {
+      audioRef.current.pause();
+    };
+  }, []);
+
 
   return (
+    <div className="pt-16">
     <div className="fixed bottom-0 left-0 right-0 bg-black text-white py-4 px-6 flex items-center justify-between shadow-lg z-50">
       <div className="flex gap-4">
 
       <Image
-        src="https://img.freepik.com/free-psd/saturday-party-social-media-template_505751-2936.jpg?t=st=1730869604~exp=1730873204~hmac=4860b332d3e72d2402d2460228cc511256340ff38adba3b6870d06f59f4d5727&w=740"
+        src={playingSong?.img}
         alt="cover"
         className="w-12 h-12 rounded-md"
         width={48}
@@ -73,6 +99,7 @@ export default function MusicPlayer() {
       ₹2,000
     </button>
       </div>
+    </div>
     </div>
   );
 }
