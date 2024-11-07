@@ -4,6 +4,7 @@ import cookieParser from 'cookie-parser';
 import authRoutes from './routes/authRoutes.js';
 import dotenv from 'dotenv';
 import connectDB from './utils/db.js';
+import cors from 'cors';
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -15,6 +16,9 @@ app.use(cookieParser());
 
 
 app.use('/api/v1', authRoutes);
+app.use(cors({
+  credentials: true, // Enable cookie sharing
+}));
 app.get('/', (req, res) => {
   res.send('API ready!');
 }); 
