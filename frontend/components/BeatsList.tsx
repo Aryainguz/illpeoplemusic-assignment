@@ -23,8 +23,14 @@ import Image from "next/image";
 import { Card } from "./ui/card";
 import { Avatar } from "./ui/avatar";
 import { Button } from "./ui/button";
+import { dataContext } from "@/context/dataContext";
+import { useContext } from "react";
 
 const FilterDropdown = ({ title }: { title: string }) => (
+
+
+
+
   <DropdownMenu>
     <DropdownMenuTrigger className="text-[#787878] text-xs font-semibold flex">
       {title}
@@ -69,9 +75,13 @@ const SortDropdown = () => (
 );
 
 const BeatCard = ({ title, artist, bpm, genere, price, tags }: any) => (
+
+
+
+
   <div className="beat-card">
-    <div className="min-h-screen block sm:hidden">
-      <Card className="bg-zinc-900 border-[#1e1e1e]">
+    {/* <div className="min-h-screen "> */}
+      <Card className="bg-zinc-900 border-[#1e1e1e] block sm:hidden">
         <div className="divide-y divide-zinc-800">
           <div
             // key={index}
@@ -128,178 +138,9 @@ const BeatCard = ({ title, artist, bpm, genere, price, tags }: any) => (
           </div>
         </div>
       </Card>
-      <Card className="bg-zinc-900 border-[#1e1e1e]">
-        <div className="divide-y divide-zinc-800">
-          <div
-            // key={index}
-            className="flex items-center justify-between gap-4
-              bg-[#1e1e1e] p-4"
-          >
-            <div className="flex items-center gap-3 flex-1 min-w-0">
-                <Image
-                  src="https://img.freepik.com/free-psd/saturday-party-social-media-template_505751-2936.jpg?t=st=1730869604~exp=1730873204~hmac=4860b332d3e72d2402d2460228cc511256340ff38adba3b6870d06f59f4d5727&w=740"
-                  alt="cover"
-                 className="w-14 h-14 rounded-md"
-                  width={48}
-                  height={48}
-                />
-              <div className="flex-1 min-w-0">
-                <h3 className="text-sm font-medium text-white truncate">
-                  {title}
-                </h3>
-                <p className="text-sm text-zinc-400 truncate">{artist}</p>
-              </div>
-            </div>
-            <div className="flex items-center gap-2">
-            <div className="flex">
-        <button className="bg-gradient-to-r from-violet-600 to-indigo-600 flex text-white px-4 py-2 rounded-md text-sm font-semibold shadow-lg">
-          <ShoppingCart size={16} className="mr-2" />₹{price}
-        </button>
-      </div>
-              <DropdownMenu>
-                <DropdownMenuTrigger asChild>
-                  <Button
-                    variant="ghost"
-                    size="icon"
-                    className="text-zinc-400 hover:text-white"
-                  >
-                    <MoreVertical className="h-5 w-5" />
-                  </Button>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent
-                  align="end"
-                  className="w-[200px] bg-zinc-900 border-zinc-800"
-                >
-                  <DropdownMenuItem className="text-white focus:bg-zinc-800 focus:text-white">
-                    Share
-                  </DropdownMenuItem>
-                  <DropdownMenuItem className="text-white focus:bg-zinc-800 focus:text-white">
-                    Add to playlist
-                  </DropdownMenuItem>
-                  <DropdownMenuItem className="text-white focus:bg-zinc-800 focus:text-white">
-                    View artist
-                  </DropdownMenuItem>
-                </DropdownMenuContent>
-              </DropdownMenu>
-            </div>
-          </div>
-        </div>
-      </Card>
-      <Card className="bg-zinc-900 border-[#1e1e1e]">
-        <div className="divide-y divide-zinc-800">
-          <div
-            // key={index}
-            className="flex items-center justify-between gap-4
-              bg-[#1e1e1e] p-4"
-          >
-            <div className="flex items-center gap-3 flex-1 min-w-0">
-                <Image
-                  src="https://img.freepik.com/free-psd/saturday-party-social-media-template_505751-2936.jpg?t=st=1730869604~exp=1730873204~hmac=4860b332d3e72d2402d2460228cc511256340ff38adba3b6870d06f59f4d5727&w=740"
-                  alt="cover"
-                  className="w-14 h-14 rounded-md"
-                  width={48}
-                  height={48}
-                />
-              <div className="flex-1 min-w-0">
-                <h3 className="text-sm font-medium text-white truncate">
-                  {title}
-                </h3>
-                <p className="text-sm text-zinc-400 truncate">{artist}</p>
-              </div>
-            </div>
-            <div className="flex items-center gap-2">
-            <div className="flex">
-        <button className="bg-gradient-to-r from-violet-600 to-indigo-600 flex text-white px-4 py-2 rounded-md text-sm font-semibold shadow-lg">
-          <ShoppingCart size={16} className="mr-2" />₹{price}
-        </button>
-      </div>
-              <DropdownMenu>
-                <DropdownMenuTrigger asChild>
-                  <Button
-                    variant="ghost"
-                    size="icon"
-                    className="text-zinc-400 hover:text-white"
-                  >
-                    <MoreVertical className="h-5 w-5" />
-                  </Button>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent
-                  align="end"
-                  className="w-[200px] bg-zinc-900 border-zinc-800"
-                >
-                  <DropdownMenuItem className="text-white focus:bg-zinc-800 focus:text-white">
-                    Share
-                  </DropdownMenuItem>
-                  <DropdownMenuItem className="text-white focus:bg-zinc-800 focus:text-white">
-                    Add to playlist
-                  </DropdownMenuItem>
-                  <DropdownMenuItem className="text-white focus:bg-zinc-800 focus:text-white">
-                    View artist
-                  </DropdownMenuItem>
-                </DropdownMenuContent>
-              </DropdownMenu>
-            </div>
-          </div>
-        </div>
-      </Card>
-      <Card className="bg-zinc-900 border-[#1e1e1e]">
-        <div className="divide-y divide-zinc-800">
-          <div
-            // key={index}
-            className="flex items-center justify-between gap-4
-              bg-[#1e1e1e] p-4"
-          >
-            <div className="flex items-center gap-3 flex-1 min-w-0">
-                <Image
-                  src="https://img.freepik.com/free-psd/saturday-party-social-media-template_505751-2936.jpg?t=st=1730869604~exp=1730873204~hmac=4860b332d3e72d2402d2460228cc511256340ff38adba3b6870d06f59f4d5727&w=740"
-                  alt="cover"
-                  className="w-14 h-14 rounded-md"
-                  width={48}
-                  height={48}
-                />
-              <div className="flex-1 min-w-0">
-                <h3 className="text-sm font-medium text-white truncate">
-                  {title}
-                </h3>
-                <p className="text-sm text-zinc-400 truncate">{artist}</p>
-              </div>
-            </div>
-            <div className="flex items-center gap-2">
-            <div className="flex">
-        <button className="bg-gradient-to-r from-violet-600 to-indigo-600 flex text-white px-4 py-2 rounded-md text-sm font-semibold shadow-lg">
-          <ShoppingCart size={16} className="mr-2" />₹{price}
-        </button>
-      </div>
-              <DropdownMenu>
-                <DropdownMenuTrigger asChild>
-                  <Button
-                    variant="ghost"
-                    size="icon"
-                    className="text-zinc-400 hover:text-white"
-                  >
-                    <MoreVertical className="h-5 w-5" />
-                  </Button>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent
-                  align="end"
-                  className="w-[200px] bg-zinc-900 border-zinc-800"
-                >
-                  <DropdownMenuItem className="text-white focus:bg-zinc-800 focus:text-white">
-                    Share
-                  </DropdownMenuItem>
-                  <DropdownMenuItem className="text-white focus:bg-zinc-800 focus:text-white">
-                    Add to playlist
-                  </DropdownMenuItem>
-                  <DropdownMenuItem className="text-white focus:bg-zinc-800 focus:text-white">
-                    View artist
-                  </DropdownMenuItem>
-                </DropdownMenuContent>
-              </DropdownMenu>
-            </div>
-          </div>
-        </div>
-      </Card>
-    </div>
+    
+     
+    {/* </div> */}
 
 
 
@@ -360,7 +201,13 @@ const BeatCard = ({ title, artist, bpm, genere, price, tags }: any) => (
   </div>
 );
 
-const BeatsList = () => (
+const BeatsList = () => {
+
+
+  const {data} = useContext(dataContext);
+  console.log("yo",data)
+
+return (
   <div className="min-h-screen p-6 text-white">
     <div className="flex">
       <Search
@@ -380,32 +227,26 @@ const BeatsList = () => (
       <SortDropdown />
     </div>
     <div className="mt-6">
-      <BeatCard
-        title="DIE SOON"
-        artist="subu beats"
-        bpm="140"
-        genere="G Minor"
-        price="599"
-        tags={["Trap", "Hip-Hop", "Dark"]}
-      />
-      <BeatCard
-        title="BLAZING FLAMES"
-        artist="Gehra Samandar"
-        bpm="128"
-        genere="C# Minor"
-        price="999"
-        tags={["Kanye", "Trap", "Rock"]}
-      />
-      <BeatCard
-        title="OYE"
-        artist="RAYZ-X"
-        bpm="104"
-        genere="A Minor"
-        price="2,499"
-        tags={["Indian", "Badshah", "Moombahton"]}
-      />
+         {data ? (
+          data.map((beat: any) => (
+            <BeatCard
+              key={beat.id}
+              title={beat.title}
+              artist={beat.producer.store.general.name}
+              // artist={"Producer"}
+              bpm={beat.tempo}
+              genere={beat.key}
+              img={beat.cover_picture}
+              price={beat.prices[0].final_price}
+              tags={beat.tag}
+            />
+          ))
+        ) : (
+          <p>Loading beats...</p> 
+        )}
+      
     </div>
   </div>
 );
-
+}
 export default BeatsList;
